@@ -1,15 +1,5 @@
 #!/bin/bash
 
-# 读取config.ini
-source ~/config.ini
-isTest=$isTest
-binPath=$binPath
-scriptPath=$scriptPath
-
-
-echo $binPath
-echo $scriptPath
-
 help_fun(){
 cat << ENTER
 	 ============= 脚本安装工具 =============
@@ -78,11 +68,31 @@ add_profile()
 	fi
 }
 
+firstInit(){
+	path=`pwd`
+	c="sddada"
+	dirname=`dirname $path`
+	configPath=$dirname"/"yconfig.ini
+	echo "1)设置脚本根目录:"$dirname"到yconfig.ini..."
+	sed -i "" -e "s~atRootPath=.*~atRootPath=\"$dirname\"~g" $configPath
+	echo "2)同步yconfig.ini到"$HOME"目录..."
+	cp -rf $configPath ~/
+}
+
+############################ main ############################
+
+if [ ! -f ~/yconfig.ini ];then
+	echo "在"$HOME"目录下面找不到yconfig.ini,首次初始化.."
+	firstInit
+fi
+
+# 读取config.ini
+source ~/yconfig.ini
 
 if [[ $# != 1 || $1 != "run" ]];then
 	help_fun
 	editor
-	exit 2
+	exit 127
 fi
 
 echo "是否对"$scriptPath"目录下的脚本进行安装?"
@@ -94,5 +104,5 @@ if [[ $REPLY == "y" || $REPLY == "Y" ]];then
 	echo "脚本环境安装成功!!"
 else
 	echo "用户终止exit (Abort)"
-	exit 0
+	exit 1
 fi
