@@ -22,7 +22,7 @@ cat << ENTER
         1.-d 目录(可选)
 		2.-m 注释(可选)
 	 example :
-        1. sh At_svnCommm.sh                                    --提交当前目录到svn
+        1. sh At_svnCommm.sh -n                                   --提交当前目录到svn
         2. sh At_svnCommm.sh -d "/usr/local/bin"	            --提交"/usr/local/bin"内容到svn
         3. sh At_svnCommm.sh -d "/usr/local/bin" -m "提交svn"    --提交"/usr/local/bin"内容到svn,添加注释"提交svn"
 	 ============= AtSaiShell 脚本SVN处理工具 =============
@@ -53,12 +53,20 @@ checkSvn()
 	esac
 }
 
+if [[ $# == 0 ]];then
+	usage
+	exit 127
+fi
 
 svnDir=""
 commitM=""
-while getopts "d:m:" arg
+
+while getopts "nd:m:" arg
 do 
 	case $arg in
+		n)
+			svnDir=`pwd`
+		;;
 		d) svnDir=$OPTARG
 		;;
 		m) commitM=$OPTARG
@@ -67,10 +75,6 @@ do
 		;;
 	esac
 done
-
-if [[ ""x == "$svnDir"x ]];then
-	svnDir=`pwd`
-fi
 
 if [[ $svnDir == "m" || $svnDir == "-m" || $commitM == "d" || $commitM == "-d" ]];then
 	echo "！！参数有误,退出(127)！" 

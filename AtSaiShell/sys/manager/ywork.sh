@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ~/config.ini
+source ~/yconfig.ini
 
 help_fun(){
 cat << ENTER
@@ -8,7 +8,7 @@ cat << ENTER
      Version: 0.1
      Date: 20160406
      Usage: 用于管理脚本的工具
-     e.g.: sh ywork.sh -a (list/detail): Show all script and Usage   
+     e.g.: sh ywork.sh -a [args]  --(list/detail): Show all script and Usage   
                        -h : Help
                        -e : Edit config.ini
      ============= 脚本管理工具 =============
@@ -16,7 +16,7 @@ ENTER
 }
 
 modifyConfig(){
-    vi ~/config.ini
+    vi ~/yconfig.ini
 }
 
 showAllScript(){
@@ -51,8 +51,8 @@ do
             modifyConfig
             ;;
         ?)  
-            echo "Unkonw argument Abort(101)" 
-            exit 101
+            echo "Unkonw argument Abort" 
+            exit 126
         ;;
     esac
 done
