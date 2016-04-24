@@ -6,7 +6,7 @@ which_python="/usr/local/bin/python"
 
 help(){
 cat <<ENTER
-	sh pyversion.sh [version] -- (2/3)
+	sh pyversion.sh [version] -- (2/3/d)
 ENTER
 }
 
@@ -23,6 +23,10 @@ changeVersion(){
 		[[ -L $python ]] && rm -r $which_python
 		ln -s "/usr/local/Cellar/python/2.7.11/bin/python2.7" $which_python
 			;;
+		"d") # Mac 自带的默认的python 路径
+		[[ -L $python ]] && rm -r $which_python
+		ln -s "/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7" $which_python
+		;;
 		* )
 			echo "error,输入错误"
 			help
