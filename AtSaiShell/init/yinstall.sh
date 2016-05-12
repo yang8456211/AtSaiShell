@@ -2,12 +2,12 @@
 
 help_fun(){
 cat << ENTER
-	 ============= 脚本安装工具 =============
+	 ============= Install For The Script =============
 	 Version: 0.1
 	 Date: 20160330
-	 Usage: 用作初始安装自己的脚本环境
+	 Usage: Init the env and install the scripts 
 	 e.g.: sh install.sh run
-	 ============= 脚本安装工具 =============
+	 ============= Install For The Script =============
 ENTER
 }
 
@@ -20,7 +20,7 @@ echo_test(){
 }
 
 exit_pro(){
-	echo "==用户退出== Abort(1)"
+	echo "==User exit== Abort(1)"
 	exit 1
 }
 
@@ -62,7 +62,7 @@ add_profile()
 		echo "\n#Setting PATH FOR LOCAL SCRIPT" >> ~/.bash_profile
 		echo "export PATH=\"$1:\${PATH}\"" >> ~/.bash_profile
 		echo "===>(info)"$binPath" is added to bash_profile successful!"
-		export PATH=$1:${PATH} #只是加到了内存中，新开终端失效
+		export PATH=$1:${PATH} 
 	else
 		echo "===>(info)"$binPath" is already in the bash_profile!<SKIP>"
 	fi
@@ -73,16 +73,16 @@ firstInit(){
 	c="sddada"
 	dirname=`dirname $path`
 	configPath=$dirname"/"yconfig.ini
-	echo "1)设置脚本根目录:"$dirname"到yconfig.ini..."
+	echo "1)Set the Script's rootPath:"$dirname"to yconfig.ini..."
 	sed -i "" -e "s~atRootPath=.*~atRootPath=\"$dirname\"~g" $configPath
-	echo "2)同步yconfig.ini到"$HOME"目录..."
+	echo "2)copy the yconfig.ini to "$HOME" dir..."
 	cp -rf $configPath ~/
 }
 
 ############################ main ############################
 
 if [ ! -f ~/yconfig.ini ];then
-	echo "在"$HOME"目录下面找不到yconfig.ini,首次初始化.."
+	echo "Failed to Find yconfig.ini in "$HOME" directory , first init..."
 	firstInit
 fi
 
@@ -95,14 +95,14 @@ if [[ $# != 1 || $1 != "run" ]];then
 	exit 127
 fi
 
-echo "是否对"$scriptPath"目录下的脚本进行安装?"
-echo "安装目录为:"$binPath"(y/n)"
+echo "Be sure to install the scripts in "$scriptPath" directory?"
+echo "The scripts will be install in :"$binPath"(y/n)"
 read
 if [[ $REPLY == "y" || $REPLY == "Y" ]];then	
 	do_file $scriptPath
 	add_profile $binPath
-	echo "脚本环境安装成功!!"
+	echo "install successful!!"
 else
-	echo "用户终止exit (Abort)"
+	echo "User exit (Abort)"
 	exit 1
 fi

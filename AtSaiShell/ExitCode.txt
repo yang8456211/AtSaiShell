@@ -1,5 +1,5 @@
-# 脚本退出Code说明
+# Code Infomation
 
-(1)   用户主动退出
-(126) 找不到该参数
-(127) 参数错误
+(1)   User exit
+(126) Can't find the args
+(127) The args is wrong
