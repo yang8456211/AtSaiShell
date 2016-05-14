@@ -70,7 +70,6 @@ add_profile()
 
 firstInit(){
 	path=`pwd`
-	c="sddada"
 	dirname=`dirname $path`
 	configPath=$dirname"/"yconfig.ini
 	echo "1)Set the Script's rootPath:"$dirname"to yconfig.ini..."
