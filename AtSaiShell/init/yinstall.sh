@@ -96,7 +96,6 @@ if [[ $isTest == "true" ]];then
 fi
 
 echo ">>>(当前工程跟目录为:$root_path)\n------------------------------------------\n"
-sleep 1s
 echo "Begin Install.."
 
 script_path=$root_path"/sys"
