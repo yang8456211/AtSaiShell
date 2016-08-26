@@ -35,7 +35,7 @@ showAllScript(){
 }
 
 
-[[ $# == 0 ]] && echo "==>ywork -h 查看帮助" && editor && exit 100
+[[ $# == 0 ]] && echo "==>ywork -h 查看帮助" && exit 100
 
 # 选项后面的冒号表示该选项需要参数,参数存在$OPTARG中
 while getopts "a:he" arg 

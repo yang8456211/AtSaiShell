@@ -91,6 +91,9 @@ root_path=`dirname "$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"`
 config_path=$root_path"/conf/yconfig.ini"
 source $config_path
 
+# 修改config中的rootpath
+sed -i '' "s~root_path=.*~root_path="$root_path"~g" $config_path
+
 if [[ $isTest == "true" ]];then
 	echo_emp "(当前属于调试模式,在脚本运行过程中会打印调试日志)"
 fi
