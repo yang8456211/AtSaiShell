@@ -1,3 +1,37 @@
-## Introduction
+# 介绍
 	
-This AtSaiShell is used to manager the bash scripts, for using it, you can have a clean environment. 
+AtSaiShell是用来管理Bash（Python）脚本的一个框架，让人可以专心于编写脚本本身。
+	
+### 优点
+
+- 安装完成后，能够在终端的任何目录执行脚本
+- 省去了整理脚本和一系列的重复开发的时间成本
+
+
+# 目录结构
+
+
+**AtSaiShell**
+   
+   - bin : 用于存放软连接的文件夹，不用关注 
+   - conf : 放置配置文件的位置，不用关注
+   - init : 安装脚本位置，首次使用或者在sys中有新脚本添加时，运行此脚本
+   - sys : 放置脚本的位置，里面放了一些我常用的脚本，需要添加自己的新脚本请放在此文件夹下（可以新建自己的文件夹，但请不要使用中文）
+   
+ 
+# 使用
+1. 首次使用请运行yinstall脚本来初始化
+	sh yinstall.sh run
+
+2. 在初始化成功之后，即可在任何位置运行sys里面的脚本了
+
+3. 如果有新添加脚本，请重新执行1步骤
+
+4. sys/manager/中的ywork脚本，可以用来查看当前所有脚本
+	ps：使用detail方式查看时，实际上是通过运行该脚本（不输入参数）来打印相关信息，因此请注意，请给自己的脚本设置参数和没有参数时的提示，可以参考manager里面的javaversion。
+ 
+
+  
+   
+
+
