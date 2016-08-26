@@ -2,26 +2,31 @@
 # @auther atany
 # 修改python版本
 
-which_python="/usr/local/bin/python"
+which_python=`which python`
+
+P3="/usr/local/Cellar/python3/3.3.3/bin/python3"
+P2="/usr/local/Cellar/python/2.7.11/bin/python2.7"
 
 help(){
 cat <<ENTER
-    sh pyversion.sh [version] -- (2/3/d)
+    e.g. sh pyversion.sh [version] -- (2/3)
+        2 : Python 2.3
+        3 : Python 3
+    Usage : 快速修改本机的 Python 版本，请先配置Python路径，修改完成之后请使用[python]查看版本
+
+    
 ENTER
 }
 
-changeVersion(){
-    python=`which python`
-    echo $python
-    
+changeVersion(){    
     case $1 in
         "3" )
         [[ -L $python ]] && rm -r $which_python
-        ln -s "/usr/local/Cellar/python3/3.3.3/bin/python3" $which_python
+        ln -s $P3 $which_python
             ;;
         "2" )
         [[ -L $python ]] && rm -r $which_python
-        ln -s "/usr/local/Cellar/python/2.7.11/bin/python2.7" $which_python
+        ln -s $P2 $which_python
             ;;
         "d") # Mac 自带的默认的python 路径
         [[ -L $python ]] && rm -r $which_python

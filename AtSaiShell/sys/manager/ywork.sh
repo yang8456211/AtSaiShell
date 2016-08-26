@@ -1,6 +1,10 @@
 #!/bin/bash
 
-source ~/yconfig.ini
+source ~/.AtSaiShell/root_config.ini
+
+config_path=$root_path"/conf/yconfig.ini"
+
+source $config_path
 
 help_fun(){
 cat << ENTER
@@ -9,6 +13,8 @@ cat << ENTER
      Date: 20160406
      Usage: 用于管理脚本的工具
      e.g.: sh ywork.sh -a [args]  --(list/detail): Show all script and Usage   
+                           list : 查看可用脚本
+                           detail : 查看所有可用脚本的使用说明
                        -h : Help
                        -e : Edit config.ini
      ============= 脚本管理工具 =============
@@ -16,11 +22,11 @@ ENTER
 }
 
 modifyConfig(){
-    vi ~/yconfig.ini
+    vi $config_path
 }
 
 showAllScript(){
-    # binPath config.ini 里读取的脚本安装的目录
+    binPath=$root_path"/bin"
     for i in `ls $binPath`
     do
         if [[ $1 == "detail" ]];then

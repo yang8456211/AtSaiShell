@@ -72,11 +72,25 @@ add_profile()
     if [[ x"$isIn" == x ]];then
         echo "\n#Setting PATH FOR LOCAL SCRIPT" >> ~/.bash_profile
         echo "export PATH=\"$1:\${PATH}\"" >> ~/.bash_profile
-        echo "==>"$binPath" is added to bash_profile!"
+        echo "==>"$bin_path" is added to bash_profile!"
         export PATH=$1:${PATH} 
     else
-        echo "==>"$binPath" 在bash_profile中已经存在!<SKIP>"
+        echo "==>"$bin_path" 在bash_profile中已经存在!<SKIP>"
     fi
+}
+
+set_root_path(){
+    if [[ ! -d ~/.AtSaiShell ]];then
+        mkdir ~/.AtSaiShell
+    fi
+
+    if [[ ! -f ~/.AtSaiShell/root_config.ini ]];then
+        touch ~/.AtSaiShell/root_config.ini
+        echo "root_path=" > ~/.AtSaiShell/root_config.ini
+        echo_test "Home目录配置文件生成成功"
+    fi
+
+    sed -i '' "s~root_path=.*~root_path="$root_path"~g" ~/.AtSaiShell/root_config.ini
 }
 
 ############################ main ############################
@@ -91,8 +105,8 @@ root_path=`dirname "$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"`
 config_path=$root_path"/conf/yconfig.ini"
 source $config_path
 
-# 修改config中的rootpath
-sed -i '' "s~root_path=.*~root_path="$root_path"~g" $config_path
+# 设置rootpath
+set_root_path
 
 if [[ $isTest == "true" ]];then
 	echo_emp "(当前属于调试模式,在脚本运行过程中会打印调试日志)"
