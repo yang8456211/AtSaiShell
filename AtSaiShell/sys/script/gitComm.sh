@@ -51,10 +51,10 @@ git_create_new_repository(){
         git init
         git add README.md
         git commit -m "init_env"
-        echo "请输入远程repository名称:"
+        echo "请输入远程仓库路径:"
         read repo
-        git remote add origin git@github.com:yang8456211/$repo
-        echo "git初始化完成,远程仓库nickname为origin,地址为git@github.com:yang8456211/$repo"
+        git remote add origin $repo
+        echo "git初始化完成,远程仓库nickname为origin,地址为$repo"
         git remote -v 
     else
         echo "Failed 用户放弃修改"
