@@ -20,7 +20,7 @@ AtSaiShell是用来管理Bash（Python）脚本的一个框架，让人可以专
    
  
 # 使用
-1. 首次使用请运行yinstall脚本来初始化
+1. 首次使用请在init目录下，运行yinstall脚本来初始化
 	sh yinstall.sh run
 
 2. 在初始化成功之后，即可在任何位置运行sys里面的脚本了
