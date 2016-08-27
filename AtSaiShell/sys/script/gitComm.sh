@@ -13,7 +13,7 @@ userinfo(){
         E-mail: 347702498@qq.com
     '''
 }
-Ï
+
 echo_emp(){
     echo -e "\033[31m"$1"\033[0m" 
 }
