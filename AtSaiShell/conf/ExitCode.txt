@@ -1,5 +1,3 @@
-# Code Infomation
-
-(1)   User exit
-(126) Can't find the args
-(127) The args is wrong
+USER_EXIT=1
+CAN_NOT_FIND_ARGS=126
+ARGS_WRONG=127
