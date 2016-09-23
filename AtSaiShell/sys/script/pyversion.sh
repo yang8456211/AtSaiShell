@@ -13,8 +13,6 @@ cat <<ENTER
         2 : Python 2.3
         3 : Python 3
     Usage : 快速修改本机的 Python 版本，请先配置Python路径，修改完成之后请使用[python]查看版本
-
-    
 ENTER
 }
 
@@ -40,15 +38,15 @@ changeVersion(){
     esac
 }
 
-
 if [[ $# != 1 ]];then
     help
     exit 0
 fi
 
+
 version=$1
 
-changeVersion $version
+# changeVersion $version
 
 echo "修改成功!"
 
