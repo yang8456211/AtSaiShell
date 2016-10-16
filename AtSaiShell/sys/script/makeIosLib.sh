@@ -10,19 +10,18 @@ Proj="/Users/a123/yg/ios/Proj/SDKCall"
 # Target名称
 Target_Name="SDKCall"
 
-# build路径
-Build_root=$Proj"/build"
-
 # 文件输出路径
 Outpath="/Users/a123/yg/ios/Sdk"
 
+# .a名称
+DotA="libSDKCall.a"
+
+Tmp_path="TMP_LIB"
+
+# ======================   配置   ======================
+
 Iphonesimulator="Release-iphonesimulator"
 Iphoneos="Release-iphoneos"
-DotA="libSDKCall.a"
-Tmp_path="/Users/a123/yg/TMP"
-
-#需要修改域名的文件，分为3595和dyb两个域名
-File_path=$Proj"/SDKCall/com/InterfaceUrl.m"
 
 # ======================   配置   ======================
 build_a(){
@@ -75,6 +74,18 @@ create_a(){
     md5 $out_path
     sleep 1s
 }
+
+if [ $# < 4 ];then
+    echo "参数错误"
+fi
+
+Proj=$1
+Target_Name=$2
+Outpath=$3
+DotA=$4
+
+# build路径
+Build_root=$Proj"/build"
 
 sim_a=$Build_root"/"$Iphonesimulator"/"$DotA
 os_a=$Build_root"/"$Iphoneos"/"$DotA
