@@ -1,2 +1,6 @@
 #忽略bin目录
 AtSaiShell/bin
+
+#Mac 文件夹
+.DS_Store
+*/.DS_Store
