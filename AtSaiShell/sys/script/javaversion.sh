@@ -2,10 +2,10 @@
 # @auther atany
 # 修改本地Java的版本
 # 注意：mac 10.11 不能修改/usr/bin文件夹里面的软链接，如果 `which java`指令的软链接是/usr/bin中的，请先关闭SIP 或者修改软链接的位置，再使用本脚本
+# 修改：2018/6/3 因为SIP的原因，所以中/usr/local/bin/中新建了一个java的软连接进行处理。（删除掉所以需要sudo的东西）
 
-
-which_java=`which java`
-
+#which_java=`which java`
+which_java="/usr/local/bin/java"
 
 # 需要配置本机的路径
 JDK6="/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/bin/java"
@@ -27,16 +27,16 @@ echo "==>"$which_java
 changeVersion(){    
     case $1 in
         "6" )
-        [[ -L $java ]] && sudo rm -r $which_java
-        sudo ln -s $JDK6 $which_java
+        rm -r $which_java
+        ln -s $JDK6 $which_java
             ;;
         "7" )
-        [[ -L $java ]] && sudo rm -r $which_java
-        sudo ln -s $JDK7 $which_java
+        rm -r $which_java
+        ln -s $JDK7 $which_java
             ;;
         "8")
-        [[ -L $java ]] && sudo rm -r $which_java
-        sudo ln -s $JDK8 $which_java
+        rm -r $which_java
+        ln -s $JDK8 $which_java
             ;;
         * )
             echo "Error,JDK版本输入错误!"
