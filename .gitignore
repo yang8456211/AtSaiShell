@@ -4,3 +4,7 @@ AtSaiShell/bin
 #Mac 文件夹
 .DS_Store
 */.DS_Store
+
+#忽略readme.txt
+AtSaiShell/sys/script/readme.txt
+

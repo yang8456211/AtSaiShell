@@ -102,7 +102,7 @@ if [[ $# != 1 || $1 != "run" ]];then
 fi
 
 root_path=`dirname "$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"`
-config_path=$root_path"/conf/yconfig.ini"
+config_path=$root_path"/conf/.yconfig.ini"
 source $config_path
 
 # 设置rootpath
