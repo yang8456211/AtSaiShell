@@ -2,7 +2,7 @@
 
 source ~/.AtSaiShell/root_config.ini
 
-config_path=$root_path"/conf/yconfig.ini"
+config_path=$root_path"/conf/.yconfig.ini"
 
 source $config_path
 

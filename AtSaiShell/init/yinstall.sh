@@ -67,15 +67,15 @@ do_file()
 
 add_profile()
 {
-    isIn=`cat ~/.bash_profile | grep $1`
+    isIn=`cat ~/.zshrc | grep $1`
     echo_test "isIn is "$isIn
     if [[ x"$isIn" == x ]];then
-        echo "\n#Setting PATH FOR LOCAL SCRIPT" >> ~/.bash_profile
-        echo "export PATH=\"$1:\${PATH}\"" >> ~/.bash_profile
-        echo "==>"$bin_path" is added to bash_profile!"
+        echo "\n#Setting PATH FOR LOCAL SCRIPT" >> ~/.zshrc
+        echo "export PATH=\"$1:\${PATH}\"" >> ~/.zshrc
+        echo "==>"$bin_path" is added to zshrc!"
         export PATH=$1:${PATH} 
     else
-        echo "==>"$bin_path" 在bash_profile中已经存在!<SKIP>"
+        echo "==>"$bin_path" 在zshrc中已经存在!<SKIP>"
     fi
 }
 
