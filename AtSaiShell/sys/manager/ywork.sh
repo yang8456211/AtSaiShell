@@ -31,7 +31,7 @@ showAllScript(){
     do
         if [[ $1 == "detail" ]];then
             echo -e "\033[31m_________ "$i" _________\033[0m"
-            eval $i
+            eval $i #无参调用指令
             echo
 
         elif [[ $1 == "list" ]];then

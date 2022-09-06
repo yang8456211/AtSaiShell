@@ -22,8 +22,6 @@ cat <<ENTER
 ENTER
 }
 
-echo "==>"$which_java
-
 changeVersion(){    
     case $1 in
         "6" )
@@ -51,6 +49,8 @@ if [[ $# != 1 ]];then
     help
     exit 0
 fi
+
+echo "==>"$which_java
 
 version=$1
 
