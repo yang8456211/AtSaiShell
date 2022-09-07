@@ -24,6 +24,16 @@ Iphonesimulator="Release-iphonesimulator"
 Iphoneos="Release-iphoneos"
 
 # ======================   配置   ======================
+help(){
+cat <<ENTER
+    e.g. sh ToIosLib.sh 
+    Proj="Arg1"
+    Target_Name="Arg2"
+    Outpath="Arg3"
+    DotA="Arg4"
+ENTER
+}
+
 build_a(){
     xcodebuild -target ${Target_Name} clean
     xcodebuild -target ${Target_Name} -configuration Release -sdk iphonesimulator
@@ -75,8 +85,10 @@ create_a(){
     sleep 1s
 }
 
-if [ $# < 4 ];then
-    echo "参数错误"
+if [[ $# < 4 ]];then
+    #echo "参数错误"
+    help
+    exit 127
 fi
 
 Proj=$1
