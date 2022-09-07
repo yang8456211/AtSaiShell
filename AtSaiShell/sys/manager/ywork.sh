@@ -30,9 +30,18 @@ showAllScript(){
     for i in `ls $binPath`
     do
         if [[ $1 == "detail" ]];then
-            echo -e "\033[31m_________ "$i" _________\033[0m"
-            eval $i #无参调用指令
-            echo
+            ignore=false
+            for j in ${ignoreBinName[*]};do
+                if [[ $j == $i ]];then
+                    ignore=true
+                fi
+            done
+
+            if [[ $ignore == false ]];then
+                echo -e "\033[31m_________ "$i" _________\033[0m"
+                eval $i #无参调用指令
+                echo
+            fi         
 
         elif [[ $1 == "list" ]];then
             echo $i
